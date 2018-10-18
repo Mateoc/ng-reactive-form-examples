@@ -1,0 +1,43 @@
+.container {
+
+  .form-group {
+    margin: 10px;
+
+    label {
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    input {
+      padding: 10px;
+      vertical-align: middle;
+    }
+  }
+
+  .valid  {
+    border: 1px solid #42A948;
+  }
+
+  .invalid {
+    border: 1px solid #a94442;
+  }
+
+  .error-msg {
+    color: #a94442;
+  }
+
+  .btn {
+    border-radius: 4px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+
+    &.submit {
+      background-color: blue;
+    }
+
+    &.delete {
+      background-color: red;
+    }
+  }
+}

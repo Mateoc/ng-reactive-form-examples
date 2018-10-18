@@ -1,0 +1,27 @@
+<div class="groups">
+  <form [formGroup]="myForm">
+    <div>
+      <span>Name:</span>
+      <input formControlName="name">
+      <!--<input [formControl]="myForm.controls.name">-->
+      <div class="errors" *ngIf="this.myForm.get('name').errors">
+        <div *ngIf="myForm.get('name').errors.nameError"> Camilo is not a human name</div>
+      </div>
+    </div>
+    <div class="input-wp">
+      <span>message:</span>
+      <input type="text" formControlName="message">
+    </div>
+    <div class="input-wp">
+      <span>message2:</span>
+      <input type="text" formControlName="message2">
+    </div>
+    <button [disabled]="myForm.invalid" class="btn submit">submit</button>
+  </form>
+  <button (click)="debugModel()">debug model</button>
+
+  <div>
+    values: <pre>{{this.myForm.value|json}}</pre>
+  </div>
+</div>
+

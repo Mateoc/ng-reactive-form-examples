@@ -1,0 +1,30 @@
+.basic {
+  font-size: 18px;
+
+  input {
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin: 10px 20px;
+  }
+
+  .input-wp {
+    margin: 10px 0;
+  }
+
+  .btn {
+    border-radius: 4px;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    margin: 0 10px;
+
+    &.submit {
+      background-color: blue;
+      margin: 10px 0;
+    }
+
+    &.action {
+      background-color: #70cca2;
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<div class="basic">
+  <p>
+    reactive-form
+  </p>
+  <span>Name:</span>
+  <input type="text" [formControl]="name" required>
+  <div>
+    value: {{name.value}}
+  </div>
+  <button class="btn submit" type="button" (click)="showModel = !showModel">Show model</button>
+  <pre *ngIf="showModel">{{name|json}}}</pre>
+  <button class="btn action" type="button" (click)="asyncAction()">Perform async action</button>
+</div>

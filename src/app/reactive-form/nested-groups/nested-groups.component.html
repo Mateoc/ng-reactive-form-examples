@@ -1,0 +1,51 @@
+<div class="nested-groups">
+  <form [formGroup]="myForm" (submit)="onSubmit()">
+    <div>
+      <p>name:</p>
+      <input type="text" formControlName="name">
+    </div>
+    <br />
+    <div class="phone-wp" formGroupName="homePhone">
+      <p>Home phone</p>
+      <input type="text" formControlName="area">
+      <input type="text" formControlName="prefix">
+      <input type="text" formControlName="number">
+    </div>
+    <div *ngIf="addAddress" class="phone-wp">
+      <p>Address</p>
+      <input type="text" formControlName="address">
+    </div>
+    <button (click)="toggleAddress()" type="button" class="btn add-phone">Toggle address</button>
+
+    <br />
+    <div class="phones-wp" formArrayName="phones">
+      <p>Other phones:</p>
+      <div *ngFor="let phone of phoneForms.controls; let i=index"
+           [formGroupName]="i" >
+          <div class="input-wp">
+            <input formControlName="area">
+            <span *ngIf="displayErrors() && isPhoneFieldError(i)('area')('required')">This field is required</span>
+          </div>
+          <div class="input-wp">
+            <input formControlName="prefix">
+            <span *ngIf="displayErrors() && isPhoneFieldError(i)('prefix')('required')">This field is required</span>
+          </div>
+          <div class="input-wp">
+            <input formControlName="number">
+            <span *ngIf="displayErrors() && isPhoneFieldError(i)('number')('required')">This field is required</span>
+          </div>
+          <button (click)="deletePhone(i)" type="button" class="btn delete">Delete</button>
+          <div>
+            <span *ngIf="displayErrors() && myForm.get('phones').get(i.toString()).invalid">Phone invalid check specific fields for more info</span>
+          </div>
+          <br />
+      </div>
+      <button (click)="addPhone()" type="button" class="btn add-phone">Add Phone Number</button>
+    </div>
+    <button class="btn submit">Submit Form</button>
+  </form>
+  <pre>
+    {{myForm.value|json}}
+  </pre>
+</div>
+

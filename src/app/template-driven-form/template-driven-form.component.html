@@ -1,0 +1,72 @@
+<div class="container">
+  <h1>Template driven form</h1>
+  <form #dataForm="ngForm" (submit)="onSubmit(dataForm)">
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        name="userName"
+        #userName="ngModel"
+        [(ngModel)]="model.name"
+        class="form-control"
+        [ngClass]="{invalid: userName.invalid && dataForm.submitted, valid: userName.valid}"
+        id="name"
+        required
+
+      >
+        <p *ngIf="userName.invalid && dataForm.submitted" class="error-msg">this field is required</p>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">phone</label>
+      <input
+        type="text"
+        name="userPhone"
+        #userPhone="ngModel"
+        class="form-control"
+        [ngClass]="{invalid: userPhone.invalid && dataForm.submitted, valid: userPhone.valid}"
+        [(ngModel)]="model.phone"
+        id="phone"
+        required
+      >
+        <p *ngIf="userPhone.invalid && dataForm.submitted" class="error-msg">this field is required</p>
+    </div>
+
+    <div class="form-group">
+      <label for="address">address</label>
+      <input
+        type="text"
+        name="userAddress"
+        #userAddress="ngModel"
+        class="form-control"
+        [ngClass]="{invalid: userAddress.invalid && dataForm.submitted, valid: userAddress.valid}"
+        [(ngModel)]="model.address"
+        id="address"
+        required
+      >
+        <p  *ngIf="userAddress.invalid && dataForm.submitted" class="error-msg">this field is required</p>
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country</label>
+      <select
+        id="country"
+        name="userCountry"
+        class="form-control"
+        [ngClass]="{invalid: userCountry.invalid && dataForm.submitted, valid: userCountry.valid}"
+        #userCountry="ngModel"
+        [(ngModel)]="model.country"
+        required
+      >
+        <option *ngFor="let country of countries" [value]="country">{{country}}</option>
+      </select>
+      <p *ngIf="userCountry.invalid && dataForm.submitted" class="error-msg">this field is required, select an option</p>
+    </div>
+
+    <button type="submit" class="btn submit">Submit</button>
+
+    <pre>{{model | json}}</pre>
+
+  </form>
+</div>

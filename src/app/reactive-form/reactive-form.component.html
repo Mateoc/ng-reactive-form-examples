@@ -1,0 +1,12 @@
+<ul class="example-list">
+  <li (click)="current='basic'" [ngClass]="{active:current === 'basic'}">Basic</li>
+  <li (click)="current='groups'" [ngClass]="{active:current === 'groups'}">Basic form groups</li>
+  <li (click)="current='nested'" [ngClass]="{active:current === 'nested'}">Nested form groups</li>
+  <li (click)="current='general'" [ngClass]="{active:current === 'general'}">General use components</li>
+</ul>
+<div [ngSwitch]="current">
+  <app-reactive-basic *ngSwitchCase="'basic'"></app-reactive-basic>
+  <app-reactive-groups *ngSwitchCase="'groups'"></app-reactive-groups>
+  <app-nested-groups *ngSwitchCase="'nested'"></app-nested-groups>
+  <app-general-use-components *ngSwitchCase="'general'"></app-general-use-components>
+</div>

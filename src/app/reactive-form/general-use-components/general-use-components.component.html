@@ -1,0 +1,18 @@
+<form [formGroup]="myForm">
+  <div>
+    name:
+    <input formControlName="name" type="text">
+  </div>
+  <div>
+    address
+    <app-address [address]="myForm.controls.address" [groupNames]="{city: 'myCity', state:'myState', address:'myAddress'}"></app-address>
+    <app-address [address]="myForm.controls.address1"></app-address>
+    <div>
+      <p>Event driven address component:</p>
+      <app-address-event-driven [address]="address" (onAddressChange)="onAddressChange($event)"></app-address-event-driven>
+    </div>
+  </div>
+
+  <pre>{{myForm.value | json}}</pre>
+  <pre>{{address | json}}</pre>
+</form>
